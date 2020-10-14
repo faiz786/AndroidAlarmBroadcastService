@@ -2,6 +2,7 @@ package com.journaldev.androidalarmbroadcastservice;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     AlarmManager alarmManager;
     PendingIntent pendingIntent;
+    MyBroadCastReceiver  myBroadCastReceiver = new MyBroadCastReceiver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
 //        IntentFilter filter = new IntentFilter(IntentFilter.action.BOOT_COMPLETED);
 //        this.registerReceiver(mMyBroadcastReceiver, filter);
+
+        IntentFilter filter = new IntentFilter(Intent.ACTION_BOOT_COMPLETED);
+        this.registerReceiver(myBroadCastReceiver, filter );
+
     }
 
     private void startAlarm() {
