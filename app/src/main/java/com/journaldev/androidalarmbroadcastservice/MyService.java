@@ -12,6 +12,7 @@ import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -37,32 +38,45 @@ public class MyService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
 
         System.out.println("came in service 1");
+       // Toast.makeText(getApplicationContext(), "came in service 1", Toast.LENGTH_LONG).show();
 
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-//        AlarmManager alarmManager2 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-//        AlarmManager alarmManager3 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        System.out.println("came in service 2");
+        AlarmManager alarmManager2 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        System.out.println("came in service 3");
+        AlarmManager alarmManager3 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        System.out.println("came in service 4");
 
         Intent alarmIntent = new Intent(this, MyBroadCastReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent,0);
-//        Intent alarmIntent2 = new Intent(this, MyBroadCastReceiver1.class);
-//        PendingIntent pendingIntent2 = PendingIntent.getBroadcast(this, 0, alarmIntent2, PendingIntent.FLAG_ONE_SHOT);
-//        Intent alarmIntent3 = new Intent(this, MyBroadCastReceiver2.class);
-//        PendingIntent pendingIntent3 = PendingIntent.getBroadcast(this, 0, alarmIntent3, PendingIntent.FLAG_ONE_SHOT);
+        System.out.println("came in service 5");
+
+//        Intent alarmIntent2 = new Intent(this, MyBroadCastReceiver.class);
+        System.out.println("came in service 6");
+        PendingIntent pendingIntent2 = PendingIntent.getBroadcast(this, 1, alarmIntent, 0);
+        System.out.println("came in service 7");
+
+//        Intent alarmIntent3 = new Intent(this, MyBroadCastReceiver.class);
+        System.out.println("came in service 8");
+        PendingIntent pendingIntent3 = PendingIntent.getBroadcast(this, 2, alarmIntent, 0);
+        System.out.println("came in service 9");
+
 //        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, 0, 10000, pendingIntent);
 //        alarmManager.setExact(AlarmManager.RTC_WAKEUP,10000, pendingIntent);
+
         long alarmTriggerTime = System.currentTimeMillis() + 10000;
-//        long alarmTriggerTime2 = System.currentTimeMillis() + 20000;
-//        long alarmTriggerTime3 = System.currentTimeMillis() + 30000;
+        long alarmTriggerTime2 = System.currentTimeMillis() + 20000;
+        long alarmTriggerTime3 = System.currentTimeMillis() + 30000;
 //        alarmManager.setExact(AlarmManager.RTC_WAKEUP,alarmTriggerTime, pendingIntent);
         alarmManager.setExact(AlarmManager.RTC_WAKEUP,alarmTriggerTime, pendingIntent);
-//        alarmManager2.setExact(AlarmManager.RTC_WAKEUP,alarmTriggerTime2, pendingIntent2);
-//        alarmManager3.setExact(AlarmManager.RTC_WAKEUP,alarmTriggerTime3, pendingIntent3);
+        alarmManager2.setExact(AlarmManager.RTC_WAKEUP,alarmTriggerTime2, pendingIntent2);
+        alarmManager3.setExact(AlarmManager.RTC_WAKEUP,alarmTriggerTime3, pendingIntent3);
 
 //        prayerName = intent.getStringExtra(EXTRA_PRAYER_NAME_PARAM);
 //        prayerTime = intent.getStringExtra(EXTRA_PRAYER_TIME_PARAM);
 //        setPrayerNotificationListener(this);
-
+        //Toast.makeText(getApplicationContext(), "came in service2", Toast.LENGTH_LONG).show();
     }
 
 //    @Override

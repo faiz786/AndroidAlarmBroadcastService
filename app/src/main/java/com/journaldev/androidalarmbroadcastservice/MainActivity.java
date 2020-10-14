@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -46,9 +47,14 @@ public class MainActivity extends AppCompatActivity {
                 cancelAlarm();
             }
         });
+
+//        IntentFilter filter = new IntentFilter(IntentFilter.action.BOOT_COMPLETED);
+//        this.registerReceiver(mMyBroadcastReceiver, filter);
     }
 
     private void startAlarm() {
+
+        System.out.println("alarm started");
 
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 //            alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, 0, pendingIntent);
@@ -57,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
 //        } else {
 //            alarmManager.set(AlarmManager.RTC_WAKEUP, 0, pendingIntent);
 //        }
-
         startService(new Intent(MainActivity.this, MyService.class));
 //        startService(new Intent(MainActivity.this, MyService1.class));
 //        startService(new Intent(MainActivity.this, MyService2.class));

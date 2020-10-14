@@ -24,11 +24,13 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (intent.getAction() != null && intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
 
-            Intent serviceIntent = new Intent(context, MyService.class);
-            context.startService(serviceIntent);
-        } else {
+        Toast.makeText(context.getApplicationContext(), "on receive == "+intent, Toast.LENGTH_LONG).show();
+//        if (intent.getAction() != null && intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
+//            Toast.makeText(context.getApplicationContext(), "on receive 2 == "+intent, Toast.LENGTH_LONG).show();
+//            Intent serviceIntent = new Intent(context, MyService.class);
+//            context.startService(serviceIntent);
+//        } else {
             Toast.makeText(context.getApplicationContext(), "Alarm Manager just ran", Toast.LENGTH_LONG).show();
 
             notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -60,7 +62,7 @@ public class MyBroadCastReceiver extends BroadcastReceiver {
 
 //            setPrayerNotificationListener(context);
 
-        }
+//        }
 
     }
 
